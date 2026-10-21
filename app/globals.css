@@ -1,0 +1,70 @@
+/* Zagnu Outreach theme. Palette sampled from zagnu.com (dark, near-black, emerald accent). */
+:root{
+  --bg:#08090a;            /* page */
+  --bg-glow:rgba(16,185,129,.14); /* soft emerald glow behind the header */
+  --surface:rgba(255,255,255,.04);   /* cards */
+  --surface-2:rgba(255,255,255,.07); /* inputs, ghost buttons */
+  --border:rgba(255,255,255,.10);
+  --text:#ffffff;
+  --text-dim:rgba(255,255,255,.68);  /* 6.3:1+ on --bg */
+  --accent:#10b981;        /* emerald */
+  --accent-light:#6ee7b7;  /* gradient start / highlights */
+  --accent-ink:#03130c;    /* text on accent buttons (AA; white on #10b981 is not) */
+  --accent-soft:rgba(16,185,129,.14);
+  --danger:#fca5a5;
+  --radius:16px;
+  --radius-sm:12px;
+  --font:Geist,"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);color-scheme:dark}
+body{margin:0;min-height:100vh;font:17px/1.5 var(--font);color:var(--text);
+  background:radial-gradient(120% 60% at 15% -10%,var(--bg-glow),transparent 60%),var(--bg);
+  -webkit-font-smoothing:antialiased}
+main{max-width:640px;margin:0 auto;padding:0 16px;padding-bottom:calc(32px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;gap:10px;padding:18px 0 14px;margin-bottom:18px;border-bottom:1px solid var(--border)}
+.mark{width:26px;height:26px;flex:none}
+.wordmark{font-weight:700;font-size:21px;letter-spacing:-.03em}
+.sub{margin-left:auto;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-light)}
+h1{font-size:34px;line-height:1.08;letter-spacing:-.04em;font-weight:700;margin:6px 0 16px}
+h1 em{font-style:normal;background:linear-gradient(120deg,var(--accent-light),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.muted{color:var(--text-dim);font-size:15px}
+.who{font-size:24px;font-weight:700;letter-spacing:-.02em;margin:2px 0 8px}
+.badge{display:inline-block;padding:3px 12px;border-radius:99px;background:var(--accent-soft);color:var(--accent-light);border:1px solid rgba(16,185,129,.35);font-size:14px;font-weight:600}
+.msg{width:100%;min-height:150px;margin:14px 0;padding:14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font:inherit;white-space:pre-wrap;resize:vertical}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:56px;margin:10px 0 0;padding:14px 20px;border:1px solid transparent;border-radius:99px;font:inherit;font-weight:600;text-align:center;text-decoration:none;cursor:pointer;overflow-wrap:anywhere;transition:transform .12s ease,background-color .15s ease,box-shadow .15s ease}
+.btn:active{transform:scale(.985)}
+.btn:disabled{opacity:.6;cursor:default}
+.primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 28px -10px rgba(16,185,129,.7)}
+.primary:hover{background:var(--accent-light)}
+.done{background:transparent;color:var(--accent-light);border-color:var(--accent)}
+.done:hover{background:var(--accent-soft)}
+.ghost{background:var(--surface-2);color:var(--text);border-color:var(--border)}
+.ghost:hover{background:rgba(255,255,255,.11)}
+.small{min-height:48px;font-size:15px;font-weight:500}
+a.small{margin-top:14px}
+input[type=password],input[type=text]{width:100%;min-height:52px;margin-top:6px;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font:inherit}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}
+.err{color:var(--danger);font-weight:600}
+.flash{background:var(--accent-soft);border:1px solid rgba(16,185,129,.35);color:#d1fae5;border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:14px}
+.flash.err{background:rgba(252,165,165,.10);border-color:rgba(252,165,165,.35);color:var(--danger)}
+#badrows{margin:8px 2px;font-size:14px}#badrows ul{margin:6px 0;padding-left:20px}
+.status{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:16px 2px 6px}
+.caught{text-align:center;padding:44px 16px}
+.caught b{font-size:28px;letter-spacing:-.03em;display:block;margin-bottom:6px}
+.check{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 14px;border-radius:50%;background:var(--accent-soft);color:var(--accent-light);font-size:28px}
+form{margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.btn:active{transform:none}}
+@media (min-width:700px){h1{font-size:44px}}
+
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0 2px}
+.chip{display:inline-block;padding:3px 12px;border-radius:99px;background:var(--surface-2);color:var(--text-dim);border:1px solid var(--border);font-size:14px}
+.from{margin:10px 0 0;font-weight:600;color:var(--accent-light)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.row2 .btn{margin-top:10px}
+.note{margin-top:14px}
+.limit{background:rgba(252,165,165,.10);border:1px solid rgba(252,165,165,.35);color:var(--danger);border-radius:var(--radius-sm);padding:10px 14px;margin-top:12px;font-size:15px}
+.filters{display:flex;gap:8px;margin:0 0 12px}
+select{flex:1;min-width:0;min-height:44px;padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-sm);background:var(--surface-2);color:var(--text);font:inherit;font-size:15px}
+.status span{white-space:nowrap}
