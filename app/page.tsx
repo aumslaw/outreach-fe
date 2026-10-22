@@ -137,6 +137,11 @@ function Queue() {
       <h1>
         Today&apos;s <em>queue.</em>
       </h1>
+      {me && s?.platform && (
+        <p className="muted">
+          {me.user} · {s.platform === "instagram" ? "Instagram" : "X"} DMs
+        </p>
+      )}
       {flash && (
         <div className={flash.bad ? "flash err" : "flash"} role="status">
           {flash.text}
@@ -176,13 +181,13 @@ function Queue() {
               {task.list && <span className="chip">{task.list}</span>}
             </div>
             {task.sender && <div className="from">Send from {task.sender}</div>}
-            <a className="btn ghost small" href={task.link} target="_blank" rel="noopener noreferrer">
-              Open {task.platform} profile: {task.link}
-            </a>
             <textarea className="msg" ref={msgRef} value={task.message} readOnly />
             <button className="btn primary" type="button" onClick={copy}>
               {copyLabel}
             </button>
+            <a className="btn primary" href={task.link} target="_blank" rel="noopener noreferrer">
+              Open {task.platform} profile
+            </a>
             <button className="btn done" type="button" disabled={busy} onClick={() => act("sent")}>
               Mark as sent
             </button>
@@ -194,7 +199,7 @@ function Queue() {
               maxLength={300}
               placeholder={
                 s.notes_saved === false
-                  ? "Notes are not saved: the sheet has no notes column"
+                  ? "Notes are not saved for this lead list"
                   : "Note for Skip or Failed (optional)"
               }
               aria-label="Note (optional)"
@@ -261,7 +266,7 @@ function Queue() {
           </button>
           {me.can_rename && (
             <a className="btn ghost small" href="/name">
-              Not you? Change name
+              Switch profile
             </a>
           )}
           <button className="btn ghost small" type="button" onClick={logout}>
