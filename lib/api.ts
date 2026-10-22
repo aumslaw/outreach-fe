@@ -26,6 +26,7 @@ export type Snapshot = {
   lists: string[];
   senders: string[];
   mode: "sheet" | "db";
+  platform?: string;
   rows_need_fixing?: number;
   bad_rows?: BadRow[];
   last_synced?: string;
@@ -36,7 +37,8 @@ export type Snapshot = {
 
 export type Session = { session: string; user: string; can_rename: boolean };
 export type Me = { user: string; can_rename: boolean };
-export type Config = { link_login: boolean; pw_login: boolean; ask_user: boolean };
+export type Profile = { name: string; platform: string };
+export type Config = { link_login: boolean; pw_login: boolean; ask_user: boolean; profiles?: Profile[] };
 
 export class ApiError extends Error {
   constructor(public status: number, message: string) {

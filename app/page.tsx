@@ -137,6 +137,11 @@ function Queue() {
       <h1>
         Today&apos;s <em>queue.</em>
       </h1>
+      {me && s?.platform && (
+        <p className="muted">
+          {me.user} · {s.platform === "instagram" ? "Instagram" : "X"} DMs
+        </p>
+      )}
       {flash && (
         <div className={flash.bad ? "flash err" : "flash"} role="status">
           {flash.text}
@@ -261,7 +266,7 @@ function Queue() {
           </button>
           {me.can_rename && (
             <a className="btn ghost small" href="/name">
-              Not you? Change name
+              Switch profile
             </a>
           )}
           <button className="btn ghost small" type="button" onClick={logout}>
