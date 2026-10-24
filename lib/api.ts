@@ -40,7 +40,7 @@ export type Me = { user: string; can_rename: boolean };
 export type Profile = { name: string; platform: string };
 export type Config = { link_login: boolean; pw_login: boolean; ask_user: boolean; profiles?: Profile[] };
 
-export type Template = { platform: string; label: string; text: string; default: string; customized: boolean };
+export type Template = { platform: string; label: string; text: string; default: string; customized: boolean; blanks?: string[] };
 export type Templates = { templates: Template[]; blanks: string[] };
 
 export class ApiError extends Error {

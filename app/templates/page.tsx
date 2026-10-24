@@ -6,6 +6,11 @@ import { ApiError, Template, Templates, api, getSession } from "@/lib/api";
 
 type Flash = { text: string; bad: boolean };
 
+function blankList(d: Templates | null): string {
+  const own = d?.templates.flatMap((t) => t.blanks || []) || [];
+  return own.length ? own.join(" and ") : "[Twitter Name] or [Instagram Name]";
+}
+
 export default function TemplatesPage() {
   const router = useRouter();
   const [data, setData] = useState<Templates | null>(null);
@@ -73,9 +78,9 @@ export default function TemplatesPage() {
         Your <em>message.</em>
       </h1>
       <p className="muted">
-        This is the DM that goes out for your account. Type {data ? data.blanks.join(" and ") : "[Name] and [Club Name]"} where
-        the contact&apos;s first name and their company should go. Saved changes are used for every DM from now on, including the
-        ones already waiting in your queue.
+        This is the DM that goes out for your account. Type {blankList(data)} where their name should go. It is filled in with
+        their display name for each contact; [Name] (first name) and [Club Name] (company) also work. Saved changes are used for
+        every DM from now on, including the ones already waiting in your queue.
       </p>
       {flash && (
         <div className={flash.bad ? "flash err" : "flash"} role="status">
