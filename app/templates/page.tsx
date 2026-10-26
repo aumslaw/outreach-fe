@@ -79,7 +79,7 @@ export default function TemplatesPage() {
       </h1>
       <p className="muted">
         This is the DM that goes out for your account. Type {blankList(data)} where their name should go. It is filled in with
-        their display name for each contact; [Name] (first name) and [Club Name] (company) also work. Saved changes are used for
+        the name of the account you are messaging (their handle); [Name] means the same, and [Club Name] (company) also works. Saved changes are used for
         every DM from now on, including the ones already waiting in your queue.
       </p>
       {flash && (
